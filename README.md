@@ -1,0 +1,2 @@
+# BinBashNull
+Dividing by zero
