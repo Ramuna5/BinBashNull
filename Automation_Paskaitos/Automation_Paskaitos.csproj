@@ -60,13 +60,16 @@
     <Compile Include="FirefoxWebDriver.cs" />
     <Compile Include="ND1.cs" />
     <Compile Include="ND2.cs" />
+    <Compile Include="Page\DemoqaTextBoxPage.cs" />
     <Compile Include="Pigu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\DemoqaTextBoxTest.cs" />
     <Compile Include="TestWebdriver.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
