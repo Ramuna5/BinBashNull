@@ -78,6 +78,7 @@ namespace Automation_Paskaitos
             {
                 checkBox.Click();
             }
+
         }
 
 

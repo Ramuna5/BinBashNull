@@ -35,7 +35,7 @@ namespace Automation_Paskaitos
         public static void testUserAgent(string browserType, string expectedResult)
         {
             IWebElement realResult = _driver.FindElement(By.CssSelector("#primary-detection")); //#primary-detection
-            Assert.AreEqual(expectedResult, realResult.Text, $"Turejo buti {expectedResult}, bet buvo {realResult}");                         //Text.Contains(expectedResult));
+            Assert.AreEqual(expectedResult, realResult.Text, $"Turejo buti {expectedResult}, bet buvo {realResult}");    //Text.Contains(expectedResult));
         }
     }
 }

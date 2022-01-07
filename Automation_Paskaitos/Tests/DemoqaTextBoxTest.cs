@@ -6,43 +6,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Automation_Paskaitos.Page;
 
 namespace Automation_Paskaitos.Tests
 {
-    class DemoqaTextBoxTest
+    class DemoqaTextBoxTest : TestBase
     {
-        class DemoqaTextBoxTest1
+
+        [Test]
+        public static void FullNameTextBoxTest()
         {
-            private static IWebDriver _driver;
+            string text = "Test";
 
-            [OneTimeSetUp]
-            public void SetUp()
-            {
-                _driver = new ChromeDriver();
-                _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-                _driver.Manage().Window.Maximize();
-                _driver.Url = "https://demoqa.com/text-box";
-            }
-
-            [OneTimeTearDown]
-            public void TearDown()
-            {
-                _driver.Close();
-            }
-
-            [Test]
-            public static void FullNameTextBoxTest()
-            {
-                DemoqaTextBoxPage demoqaTextBoxPage = new DemoqaTextBoxPage(_driver);
-
-                string text = "Arnas";
-
-                demoqaTextBoxPage.InsertTextToFullNameField(text);
-                demoqaTextBoxPage.ClickSubmitButton();
-                demoqaTextBoxPage.VerifyFullNameResult(text);
-            }
+            demoqaTextBoxPage.NavigateToDefaultPage();
+            demoqaTextBoxPage.ClosePopUp();
+            demoqaTextBoxPage.InsertTextToFullNameField(text);
+            demoqaTextBoxPage.ClickSubmitButton();
+            demoqaTextBoxPage.VerifyFullNameResult(text);
         }
-
 
     }
 }
