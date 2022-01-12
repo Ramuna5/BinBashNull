@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace Automation_Paskaitos.Drivers
 {
-    class Browsers
+    enum Browsers
     {
+        Chrome,
+        IncognitoChrome,
+        Firefox,
+        Opera,
+        Edge,
+        InternetExplorer,
+        Safari
     }
 }

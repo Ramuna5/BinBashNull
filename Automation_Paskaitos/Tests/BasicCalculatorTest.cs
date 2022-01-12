@@ -10,24 +10,8 @@ using Automation_Paskaitos.Page;
 
 namespace Automation_Paskaitos.Tests
 {
-    class BasicCalculatorTest
+    class BasicCalculatorTest : TestBase
     {
-        private static IWebDriver _driver;
-
-        [OneTimeSetUp]
-        public void SetUp()
-        {
-            _driver = new ChromeDriver();
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            _driver.Manage().Window.Maximize();
-            _driver.Url = "https://testsheepnz.github.io/BasicCalculator.html#main-body";
-        }
-
-        [OneTimeTearDown]
-        public static void TearDown()
-        {
-            _driver.Close();
-        }
 
         [TestCase("25", "25.5", false, "50.5", TestName = "25 + 25,5 = 50,5")]
         [TestCase("5", "25.5", true, "30", TestName = "5 + 25,5 = -30")]
@@ -35,14 +19,12 @@ namespace Automation_Paskaitos.Tests
         [TestCase("-1", "-9.99", true, "-10", TestName = "-1 + -9,99 = -10")]
         public static void TestSumBlock(string firstInputValue, string secondInputValue, bool shouldBeChecked, string result)
         {
-            BasicCalculatorPage basicCalculatorPage = new BasicCalculatorPage(_driver);
-
-            basicCalculatorPage.EnterFirstInputField(firstInputValue)
+            basicCalculatorPage.NavigateToDefaultPage()
+                .EnterFirstInputField(firstInputValue)
                 .EnterSecondInputValue(secondInputValue)
                 .CheckIfIntegersOnly(shouldBeChecked)
                 .ClickCalculateButton()
                 .VerifyResult(result);
-
         }
     }
 }

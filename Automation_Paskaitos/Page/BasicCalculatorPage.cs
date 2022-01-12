@@ -8,19 +8,25 @@ using System.Threading.Tasks;
 
 namespace Automation_Paskaitos.Page
 {
-    class BasicCalculatorPage
+    class BasicCalculatorPage : BasePage
     {
-        private static IWebDriver _driver;
+        private const string PageAddress = "https://testsheepnz.github.io/BasicCalculator.html#main-body";
+        private IWebElement _firstInput => Driver.FindElement(By.Id("number1Field"));
+        private IWebElement _secondInput => Driver.FindElement(By.Id("number2Field"));
+        private IWebElement _intOnlyCheckBox => Driver.FindElement(By.Id("integerSelect"));
+        private IWebElement _calculateButton => Driver.FindElement(By.Id("calculateButton"));
+        private IWebElement _actualResult => Driver.FindElement(By.Id("numberAnswerField"));
 
-        private IWebElement _firstInput => _driver.FindElement(By.Id("number1Field"));
-        private IWebElement _secondInput => _driver.FindElement(By.Id("number2Field"));
-        private IWebElement _intOnlyCheckBox => _driver.FindElement(By.Id("integerSelect"));
-        private IWebElement _calculateButton => _driver.FindElement(By.Id("calculateButton"));
-        private IWebElement _actualResult => _driver.FindElement(By.Id("numberAnswerField"));
+        public BasicCalculatorPage(IWebDriver webdriver) : base(webdriver) { }
 
-        public BasicCalculatorPage(IWebDriver webdriver)
+        public BasicCalculatorPage NavigateToDefaultPage()
         {
-            _driver = webdriver;
+            if (Driver.Url != PageAddress)
+            {
+                Driver.Url = PageAddress;
+            }
+
+            return this;
         }
 
         public BasicCalculatorPage EnterFirstInputField(string firstValue)
@@ -70,6 +76,7 @@ namespace Automation_Paskaitos.Page
 
             return this;
         }
+
 
     }
 }
